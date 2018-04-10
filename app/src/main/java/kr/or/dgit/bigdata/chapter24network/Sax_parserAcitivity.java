@@ -122,7 +122,8 @@ public class Sax_parserAcitivity extends AppCompatActivity {
         boolean initItem = false; // 태그가 새로 시작하는지, 기존의 태그인지를 확인하기 위한 플래그
         // characters() 함수는 태그가 끝날 때 마다 호출 되기 때문에 해당 태그가 끝나는 태그인지를 확인해야 함
         // ex)<order> characters() 호출 <Item> characters() 호출 되는 식
-        // 따라서 태그 내 text를 다 읽
+        // 따라서 파싱 하고나 하는 태그 내 text를 읽기 위해서 startElement 함수에서 플래그를 true로 선언하고,
+        // 다음에 호출되는 characters() 함수에서 text를 읽고 initItem 플래그를 false로 변경
 
         Item itemClass;
         List<Item> arItems = new ArrayList<>();
