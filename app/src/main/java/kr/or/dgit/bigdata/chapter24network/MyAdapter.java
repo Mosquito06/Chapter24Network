@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by DGIT3-12 on 2018-04-10.
@@ -15,15 +16,15 @@ import java.util.ArrayList;
 
 public class MyAdapter extends BaseAdapter {
     Context context;
-    int layout;
-    ArrayList<Item> itemList;
+    int layout; //R.layout.itemrow
+    List<Item> itemList;
     LayoutInflater inflater;
 
-    public MyAdapter(Context context, int layout, ArrayList<Item> itemList) {
+    public MyAdapter(Context context, int layout, List<Item> itemList) {
         this.context = context;
         this.layout = layout;
         this.itemList = itemList;
-        this.inflater = LayoutInflater.from(context);
+        this.inflater = LayoutInflater.from(context);//전개자 구함.
     }
 
     @Override
@@ -32,13 +33,13 @@ public class MyAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
-        return itemList.get(i).getItemName();
+    public Object getItem(int position) {
+        return itemList.get(position);
     }
 
     @Override
-    public long getItemId(int i) {
-        return i;
+    public long getItemId(int position) {
+        return position;
     }
 
     class ViewHolder{
@@ -50,22 +51,22 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View itemLayout = convertView;
-        ViewHolder viewHolder = null;
-        if(itemLayout == null){
-        itemLayout = inflater.inflate(layout, parent, false);
-        viewHolder = new ViewHolder();
-        viewHolder.itemName = (TextView) itemLayout.findViewById(R.id.itemName);
-        viewHolder.makerName = (TextView) itemLayout.findViewById(R.id.makerName);
-        viewHolder.itemPrice = (TextView) itemLayout.findViewById(R.id.itemPrice);
-        itemLayout.setTag(viewHolder);
-    }else{
-        viewHolder = (ViewHolder) itemLayout.getTag();
-    }
+        ViewHolder viewHoler = null;
 
-        viewHolder.itemName.setText(itemList.get(position).getItemName());
-        viewHolder.makerName.setText(itemList.get(position).getMakerName());
-        viewHolder.itemPrice.setText(itemList.get(position).getItemPrice());
-
+        if (itemLayout == null){
+            itemLayout = inflater.inflate(layout, parent, false);
+            viewHoler = new ViewHolder();
+            viewHoler.itemName = itemLayout.findViewById(R.id.itemName);
+            viewHoler.makerName = itemLayout.findViewById(R.id.makerName);
+            viewHoler.itemPrice = itemLayout.findViewById(R.id.itemPrice);
+            itemLayout.setTag(viewHoler);
+        }else{
+            viewHoler = (ViewHolder) itemLayout.getTag();
+        }
+        Item item = itemList.get(position);
+        viewHoler.itemName.setText(item.getItemName());
+        viewHoler.makerName.setText(item.getMakerName());
+        viewHoler.itemPrice.setText(item.getItemPrice()+"");
         return itemLayout;
-}
+    }
 }

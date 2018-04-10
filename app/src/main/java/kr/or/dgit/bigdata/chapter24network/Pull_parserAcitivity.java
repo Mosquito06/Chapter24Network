@@ -8,6 +8,6 @@ public class Pull_parserAcitivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pull_parser_acitivity);
+        setContentView(R.layout.activity_parser);
     }
 }
