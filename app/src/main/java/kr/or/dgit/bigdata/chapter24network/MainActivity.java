@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         datas.add("HTMLReadActivity");
         datas.add("WebServiceGetEx");
-
+        datas.add("XmlParserActivity");
 
         listView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, datas));
         listView.setOnItemClickListener(this);

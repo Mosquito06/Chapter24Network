@@ -20,7 +20,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".HTMLReadActivity" />
-        <activity android:name=".WebServiceGetEx"></activity>
+        <activity android:name=".WebServiceGetEx" />
+        <activity android:name=".XmlParserActivity" />
+        <activity android:name=".Dom_parserAcitivity" />
+        <activity android:name=".Sax_parserAcitivity" />
+        <activity android:name=".Pull_parserAcitivity" />
+        <activity android:name=".Json_parserAcitivity"></activity>
     </application>
 
 </manifest>
